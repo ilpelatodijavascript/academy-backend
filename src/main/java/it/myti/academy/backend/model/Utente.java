@@ -36,5 +36,5 @@ public class Utente {
     @Column
     @OneToMany(mappedBy = "utente")
     protected List<Collo> spedizioniFatte;
-
+    
 }

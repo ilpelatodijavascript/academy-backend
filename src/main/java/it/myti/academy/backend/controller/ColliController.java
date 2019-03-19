@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Created by david at 2019-03-07
  */
-@RestController("/collo")
+@RestController
+@RequestMapping("/collo")
 public class ColliController {
 
     @Autowired
@@ -31,8 +33,9 @@ public class ColliController {
         if(utente!=null) {
             returnValue = colloService.getSpedizioniAttiveByUtente(utente);
         }
-
+        
         return returnValue;
     }
 
+   
 }

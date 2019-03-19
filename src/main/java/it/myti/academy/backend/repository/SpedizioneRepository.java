@@ -1,12 +1,12 @@
 package it.myti.academy.backend.repository;
 
-import it.myti.academy.backend.model.Utente;
+import it.myti.academy.backend.model.Spedizione;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Simone
  */
-public interface UtenteRepository extends JpaRepository<Utente, Long> {
+public interface SpedizioneRepository extends JpaRepository<Spedizione, Long> {
 }
 

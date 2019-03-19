@@ -33,5 +33,9 @@ public class StatoUnitaLogistica {
 
     @OneToMany(mappedBy = "stato")
     protected List<UnitaLogistica> unitaLogistiche;
-
+    
+    @Override
+    public String toString(){
+        return "status=" + nome;
+    }
 }

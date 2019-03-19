@@ -1,5 +1,7 @@
 package it.myti.academy.backend.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -48,5 +50,9 @@ public class Spedizione {
     @OneToMany(mappedBy = "spedizione")
     protected List<Collo> colliInviati;
 
-
+    @Override
+    public String toString() {
+        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+        return "partenzaIl=" + dateFormat.format(partenzaIl) + ", partenzaDa=" + partenzaDa + ", arrivoIl=" + dateFormat.format(arrivoIl) + ", arrivoA=" + arrivoA;
+    }
 }

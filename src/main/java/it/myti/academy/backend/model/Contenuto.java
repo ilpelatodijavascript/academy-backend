@@ -30,10 +30,10 @@ public class Contenuto {
     @Column(length = 2048)
     protected String descrizione;
 
-    @Column(name = "temperatura_minima_ricchiesta")
+    @Column(name = "temperatura_minima_richiesta")
     protected Short tempMinRichiesta;
 
-    @Column(name = "temperatura_massima_ricchiesta")
+    @Column(name = "temperatura_massima_richiesta")
     protected Short tempMaxRichiesta;
 
     @Column(scale = 2)
@@ -45,4 +45,9 @@ public class Contenuto {
     @ManyToOne
     @JoinColumn(name = "collo_id")
     protected Collo collo;
+    
+    @Override
+    public String toString(){
+        return "nome_contenuto=" + nome + ", descrizione=" + descrizione + ", quantita=" + quantita + unitaDiMisura;
+    }
 }
