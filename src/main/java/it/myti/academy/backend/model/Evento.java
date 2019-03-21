@@ -47,5 +47,5 @@ public abstract class Evento {
     @ManyToOne
     @JoinColumn(name = "collo_id")
     protected Collo collo;
-
+    
 }

@@ -44,8 +44,4 @@ public class UnitaLogistica {
     @OneToMany(mappedBy = "unitaLogistica")
     protected List<Collo> spedizioniFatte;
 
-    @Override
-    public String toString(){
-        return "{" + "id=" + id + ", codice=" + codice + ", id_esterno=" + idEsterno + ", temp_massima=" + temperatureMassima + ", temp_minima=" + temperaturaMinima + ", stato_id=" + stato + "}";
-    }
 }

@@ -31,27 +31,44 @@ public class UnitaLogisticaServiceImpl implements UnitaLogisticaService{
     private SpedizioneRepository spedizioneRepository;
 
     @Override
-    public List<DettaglioUnitaLogistica> findByUserId(Long id){
+    public List<DettaglioUnitaLogistica> findAllDettaglioByUserId(Long id){
         List<DettaglioUnitaLogistica> returnValue = new ArrayList<>();
-        List<Object[]> unitaLogistiche = (List<Object[]>) unitaLogisticaRepository.findByUserId(id);
+        List<Object[]> unitaLogistiche = (List<Object[]>) unitaLogisticaRepository.findAllDettaglioByUserId(id);
+        
+        unitaLogistiche.stream().filter((foo) -> (foo.length>0)).forEachOrdered((foo) -> {
+            returnValue.add(new DettaglioUnitaLogistica(
+                    longValue(foo[0]),
+                    stringValue(foo[1]),
+                    statoUnitaLogisticaRepository.findById(longValue(foo[2])).get(),
+                    spedizioneRepository.findById(longValue(foo[3])).get()
+            ));
+        });
+        return returnValue;
+    }
+    
+    @Override
+    public DettaglioUnitaLogistica findDettaglioById(Long id){
+        List<DettaglioUnitaLogistica> returnValue = new ArrayList<>();
+        List<Object[]> unitaLogistiche = (List<Object[]>) unitaLogisticaRepository.findAllDettaglioByUserId(id);
         
         for(Object[] foo : unitaLogistiche){
             if(foo.length>0){
                 returnValue.add(new DettaglioUnitaLogistica(
-                    toLong(foo[0]),
-                    toString(foo[1]),
-                    statoUnitaLogisticaRepository.findById(toLong(foo[2])).get(),
-                    spedizioneRepository.findById(toLong(foo[3])).get()
+                    longValue(foo[0]),
+                    stringValue(foo[1]),
+                    statoUnitaLogisticaRepository.findById(longValue(foo[2])).get(),
+                    spedizioneRepository.findById(longValue(foo[3])).get()
                 ));
+            }else{
+                return null;
             }
         }
-        return returnValue;
+        return returnValue.get(0);
     }
-    
-    private Long toLong(Object o){
+    private Long longValue(Object o){
         return Long.valueOf(String.valueOf(o));
     }
-    private String toString(Object o){
+    private String stringValue(Object o){
         return String.valueOf(o);
     }
 }

@@ -15,7 +15,7 @@ VALUES
   ( 4, 'IN ATTESA', 'Unità in attesa' );
 
 INSERT INTO unita_logistiche (`id`, `codice`, `id_esterno`, `temp_massima`, `temp_minima`, `stato_id`)
-VALUES ( 1, 'AAAA', 'UL2', 12, -12, 1);
+VALUES ( 1, 'AAAA', 'UL2', 12, -12, 3);
 
 INSERT INTO spedizioni (`id`, `codice_treno`, `partenza_il`, `partenza_da`, `arrivo_il`, `arrivo_a`)
 VALUES
