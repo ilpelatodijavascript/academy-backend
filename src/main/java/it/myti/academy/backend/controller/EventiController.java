@@ -5,12 +5,9 @@
  */
 package it.myti.academy.backend.controller;
 
-import it.myti.academy.backend.model.DettaglioUnitaLogistica;
 import it.myti.academy.backend.model.Evento;
-import it.myti.academy.backend.model.Utente;
 import it.myti.academy.backend.repository.UtenteRepository;
 import it.myti.academy.backend.service.EventoService;
-import it.myti.academy.backend.service.UnitaLogisticaService;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;

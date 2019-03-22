@@ -12,46 +12,24 @@ package it.myti.academy.backend.model;
  */
 
 public class DettaglioUnitaLogistica {
-    /*
-    
-    id			- Long
-    nome 		- String
-    status		- Obj
-    latitudine		- String
-    longitudine		- String
-    temperatura 	- Double
-    umidità		- Double
-    spedizione		- Obj
-    contenuto		- List<Obj>
-
-    */
-    
     private Long id;
     private String nome, latitudine, longitudine;
     private StatoUnitaLogistica status;
     private Spedizione spedizione;
     private Contenuto contenuto;
-    /*
-    public DettaglioUnitaLogistica(Long id, String nome, String latitudine, String longitudine, StatoUnitaLogistica status, Spedizione spedizione, Contenuto contenuto) {
-        --this.id = id;
-        --this.nome = nome;
-        this.latitudine = latitudine;
-        this.longitudine = longitudine;
-        --this.status = status;
-        --this.spedizione = spedizione;
-        this.contenuto = contenuto;
-    }
-    */
     
-    public DettaglioUnitaLogistica(Long id, String nome, StatoUnitaLogistica status, Spedizione spedizione) {
+    public DettaglioUnitaLogistica(Long id, String nome, String latitudine, String longitudine, StatoUnitaLogistica status, Spedizione spedizione, Contenuto contenuto) {
         this.id = id;
         this.nome = nome;
+        this.latitudine = latitudine;
+        this.longitudine = longitudine;
         this.status = status;
         this.spedizione = spedizione;
+        this.contenuto = contenuto;
     }
     
     @Override
     public String toString(){
-        return "{" + "id=" + id + ", nome=" + nome + ", " + status + ", " + spedizione + "}";
+        return "{" + "id=" + id + ", nome=" + nome + ", latitudine=" + latitudine + ", longitudine=" + longitudine + ", " + status + ", " + spedizione + ", " + contenuto + "}";
     }
 }

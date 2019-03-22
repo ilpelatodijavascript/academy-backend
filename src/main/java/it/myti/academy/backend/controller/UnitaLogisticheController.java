@@ -6,8 +6,6 @@
 package it.myti.academy.backend.controller;
 
 import it.myti.academy.backend.model.DettaglioUnitaLogistica;
-import it.myti.academy.backend.model.Utente;
-import it.myti.academy.backend.repository.UnitaLogisticaRepository;
 import it.myti.academy.backend.repository.UtenteRepository;
 import it.myti.academy.backend.service.UnitaLogisticaService;
 import java.util.Arrays;
@@ -43,10 +41,10 @@ public class UnitaLogisticheController {
         }
     }
     
-    @GetMapping("/{id}")
-    public String getDettaglioUnitaLogisticaStringById(@PathVariable("id") long id){
-        if(utenteRepository.findById(id) != null) {
-            DettaglioUnitaLogistica returnValue = (DettaglioUnitaLogistica) unitaLogisticaService.findDettaglioById(id);
+    @GetMapping("/{idUnitaLogistica}/utente/{idUtente}")
+    public String getDettaglioUnitaLogisticaStringById(@PathVariable("idUnitaLogistica") long idUnitaLogistica, @PathVariable("idUtente") long idUtente){
+        if(utenteRepository.findById(idUtente) != null) {
+            DettaglioUnitaLogistica returnValue = (DettaglioUnitaLogistica) unitaLogisticaService.findDettaglioById(idUnitaLogistica, idUtente);
             return returnValue.toString();
         }else{
             return null;

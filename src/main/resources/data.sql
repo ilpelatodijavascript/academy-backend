@@ -31,7 +31,7 @@ VALUES
        (3, '2019-02-01 10:40:34', 1, 1, 1),
        (4, '2019-02-01 10:50:34', 1, 1, 1),
        (5, '2019-02-01 11:00:34', 1, 1, 1),
-       (6, '2019-02-01 11:10:34', 1, 1, 1);
+       (6, '2020-02-01 11:10:34', 1, 1, 1);
 
 INSERT INTO eventi_hannibal (`id`, `codice_evento`, `codice_treno`)
 VALUES  (1, 'EPARTE' , '0000010123');
@@ -43,3 +43,7 @@ VALUES
       (4, 2.56, 80.8, 0, 45.556556, 10.216596, 100),
       (5, 2.82, 80.3, 0, 45.556556, 10.216596, 100),
       (6, 2.93, 79.9, 0, 45.556556, 10.216596, 100);
+
+INSERT INTO contenuti (`id`, `nome`, `descrizione`, `temperatura_minima_richiesta`, `temperatura_massima_richiesta`, `quantita`, `unita_di_misura`, `collo_id`)
+VALUES
+      (1, 'Contenuto liquido', 'Contenuto 1', -12, 12, 100, 'ml',1);

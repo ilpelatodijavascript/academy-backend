@@ -39,7 +39,7 @@ public class Contenuto {
     @Column(scale = 2)
     protected Double quantita;
 
-    @Column(length = 2)
+    @Column(name = "unita_di_misura", length = 2)
     protected String unitaDiMisura;
 
     @ManyToOne

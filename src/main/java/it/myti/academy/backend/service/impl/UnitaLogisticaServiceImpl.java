@@ -6,6 +6,7 @@
 package it.myti.academy.backend.service.impl;
 
 import it.myti.academy.backend.model.DettaglioUnitaLogistica;
+import it.myti.academy.backend.repository.ContenutoRepository;
 import it.myti.academy.backend.repository.SpedizioneRepository;
 import it.myti.academy.backend.repository.StatoUnitaLogisticaRepository;
 import it.myti.academy.backend.repository.UnitaLogisticaRepository;
@@ -29,6 +30,9 @@ public class UnitaLogisticaServiceImpl implements UnitaLogisticaService{
     
     @Autowired
     private SpedizioneRepository spedizioneRepository;
+    
+    @Autowired
+    private ContenutoRepository contenutoRepository;
 
     @Override
     public List<DettaglioUnitaLogistica> findAllDettaglioByUserId(Long id){
@@ -37,27 +41,33 @@ public class UnitaLogisticaServiceImpl implements UnitaLogisticaService{
         
         unitaLogistiche.stream().filter((foo) -> (foo.length>0)).forEachOrdered((foo) -> {
             returnValue.add(new DettaglioUnitaLogistica(
-                    longValue(foo[0]),
-                    stringValue(foo[1]),
-                    statoUnitaLogisticaRepository.findById(longValue(foo[2])).get(),
-                    spedizioneRepository.findById(longValue(foo[3])).get()
+                    longValue(foo[0]), //Id
+                    stringValue(foo[1]), //Codice
+                    stringValue(foo[2]), //Latitudine
+                    stringValue(foo[3]), //Longitudine
+                    statoUnitaLogisticaRepository.findById(longValue(foo[4])).get(), //Status
+                    spedizioneRepository.findById(longValue(foo[5])).get(), //Spedizione
+                    contenutoRepository.findById(longValue(foo[6])).get() //Contenuto
             ));
         });
         return returnValue;
     }
     
     @Override
-    public DettaglioUnitaLogistica findDettaglioById(Long id){
+    public DettaglioUnitaLogistica findDettaglioById(Long idUnitaLogistica, Long idUtente){
         List<DettaglioUnitaLogistica> returnValue = new ArrayList<>();
-        List<Object[]> unitaLogistiche = (List<Object[]>) unitaLogisticaRepository.findAllDettaglioByUserId(id);
+        List<Object[]> unitaLogistiche = (List<Object[]>) unitaLogisticaRepository.findAllDettaglioByUserId(idUnitaLogistica);
         
         for(Object[] foo : unitaLogistiche){
             if(foo.length>0){
                 returnValue.add(new DettaglioUnitaLogistica(
-                    longValue(foo[0]),
-                    stringValue(foo[1]),
-                    statoUnitaLogisticaRepository.findById(longValue(foo[2])).get(),
-                    spedizioneRepository.findById(longValue(foo[3])).get()
+                    longValue(foo[0]), //Id
+                    stringValue(foo[1]), //Codice
+                    stringValue(foo[2]), //Latitudine
+                    stringValue(foo[3]), //Longitudine
+                    statoUnitaLogisticaRepository.findById(longValue(foo[4])).get(), //Status
+                    spedizioneRepository.findById(longValue(foo[5])).get(), //Spedizione
+                    contenutoRepository.findById(longValue(foo[6])).get() //Contenuto
                 ));
             }else{
                 return null;

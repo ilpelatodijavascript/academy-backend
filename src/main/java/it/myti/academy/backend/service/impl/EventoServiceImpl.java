@@ -5,11 +5,8 @@
  */
 package it.myti.academy.backend.service.impl;
 
-import it.myti.academy.backend.model.DettaglioUnitaLogistica;
 import it.myti.academy.backend.model.Evento;
 import it.myti.academy.backend.repository.EventoRepository;
-import it.myti.academy.backend.repository.StatoUnitaLogisticaRepository;
-import it.myti.academy.backend.repository.UnitaLogisticaRepository;
 import it.myti.academy.backend.service.EventoService;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -33,7 +30,6 @@ public class EventoServiceImpl implements EventoService{
         eventi.forEach((foo) -> {
             returnValue.add(eventoRepository.findById(foo.longValue()).get());
         });
-        
         return returnValue;
     }
 }

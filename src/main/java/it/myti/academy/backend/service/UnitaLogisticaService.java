@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface UnitaLogisticaService {
     public List<DettaglioUnitaLogistica> findAllDettaglioByUserId(Long id);
-    public DettaglioUnitaLogistica findDettaglioById(Long id);
+    public DettaglioUnitaLogistica findDettaglioById(Long idUnitaLogistica, Long idUtente);
 }
